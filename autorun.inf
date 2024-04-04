@@ -1,0 +1,5 @@
+[AutoRun]
+open=autorun.exe
+icon=autorun.ico
+action=Tout éffacer 
+label=Programme Nuke

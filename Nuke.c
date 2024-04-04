@@ -1,5 +1,7 @@
 #include<stdlib.h>
 
-int main(int __argc, char *__argv[] ){
+int main(int argc, char **argv){
+    int i;
 
+    return 0;
 }
