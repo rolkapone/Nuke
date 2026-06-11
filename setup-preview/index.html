@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SetupView — Prévisualisez votre setup</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🖥️</span>
+      <div>
+        <h1>SetupView</h1>
+        <p>Prévisualisez et planifiez votre bureau, gaming ou autre</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <label class="preset-label">Preset
+        <select id="presetSelect">
+          <option value="">— choisir —</option>
+          <option value="gaming">🎮 Gaming</option>
+          <option value="bureautique">💼 Bureautique</option>
+          <option value="streaming">🎥 Streaming</option>
+          <option value="dual">🖥️🖥️ Double écran</option>
+        </select>
+      </label>
+      <button id="btnSave" class="btn">💾 Sauvegarder</button>
+      <button id="btnLoad" class="btn">📂 Charger</button>
+      <button id="btnExportPng" class="btn">🖼️ Export PNG</button>
+      <button id="btnExportJson" class="btn">⬇️ Export JSON</button>
+      <button id="btnImportJson" class="btn">⬆️ Importer</button>
+      <button id="btnClear" class="btn btn-danger">🗑️ Vider</button>
+      <input type="file" id="fileImport" accept="application/json" hidden />
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- Catalogue -->
+    <aside class="panel catalog">
+      <h2>Catalogue</h2>
+      <p class="hint">Cliquez ou glissez un élément sur le plan.</p>
+      <div id="catalogList" class="catalog-list"></div>
+    </aside>
+
+    <!-- Plan de travail -->
+    <section class="stage-wrap">
+      <div class="stage-toolbar">
+        <span id="itemCount" class="badge">0 élément</span>
+        <div class="spacer"></div>
+        <button id="btnGrid" class="btn btn-sm" title="Afficher / masquer la grille">⏹️ Grille</button>
+        <button id="btnFront" class="btn btn-sm" title="Mettre au premier plan">⬆️ Avant</button>
+        <button id="btnBack" class="btn btn-sm" title="Mettre à l'arrière">⬇️ Arrière</button>
+        <button id="btnRotate" class="btn btn-sm" title="Pivoter de 15°">🔄 Pivoter</button>
+        <button id="btnDuplicate" class="btn btn-sm" title="Dupliquer">⧉ Dupliquer</button>
+        <button id="btnDelete" class="btn btn-sm btn-danger" title="Supprimer (Suppr)">✕ Supprimer</button>
+      </div>
+      <div class="canvas-holder">
+        <canvas id="stage" width="1100" height="720"></canvas>
+      </div>
+    </section>
+
+    <!-- Propriétés -->
+    <aside class="panel props">
+      <h2>Propriétés</h2>
+      <div id="noSelection" class="hint">Aucun élément sélectionné.</div>
+      <div id="propForm" class="prop-form" hidden>
+        <label>Nom
+          <input type="text" id="propName" />
+        </label>
+        <label>Couleur
+          <input type="color" id="propColor" />
+        </label>
+        <label>Largeur <span id="propWLabel"></span>
+          <input type="range" id="propW" min="20" max="600" />
+        </label>
+        <label>Hauteur <span id="propHLabel"></span>
+          <input type="range" id="propH" min="20" max="600" />
+        </label>
+        <label>Rotation <span id="propRLabel"></span>
+          <input type="range" id="propR" min="0" max="360" />
+        </label>
+        <div class="layer-info">
+          <span>Position : <b id="propPos">—</b></span>
+        </div>
+      </div>
+      <hr />
+      <div class="summary">
+        <h3>Résumé du setup</h3>
+        <ul id="summaryList" class="summary-list"></ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <span>SetupView — application autonome, aucune donnée envoyée en ligne. Vos setups sont stockés dans votre navigateur.</span>
+  </footer>
+
+  <script src="js/catalog.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
